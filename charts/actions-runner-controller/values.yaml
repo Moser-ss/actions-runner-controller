@@ -170,6 +170,7 @@ githubWebhookServer:
   replicaCount: 1
   syncPeriod: 10m
   secret:
+    enabled: false
     create: false
     name: "github-webhook-server"
     ### GitHub Webhook Configuration
