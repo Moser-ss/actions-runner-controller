@@ -11,4 +11,5 @@ import (
 func init() {
 	metrics.Registry.MustRegister(runnerDeploymentMetrics...)
 	metrics.Registry.MustRegister(horizontalRunnerAutoscalerMetrics...)
+	metrics.Registry.MustRegister(runnersMetrics...)
 }

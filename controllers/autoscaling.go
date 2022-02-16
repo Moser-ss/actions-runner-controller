@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/actions-runner-controller/actions-runner-controller/api/v1alpha1"
+	controllerMetrics "github.com/actions-runner-controller/actions-runner-controller/controllers/metrics"
 	"github.com/google/go-github/v39/github"
 )
 
@@ -307,6 +308,10 @@ func (r *HorizontalRunnerAutoscalerReconciler) suggestReplicasByPercentageRunner
 			}
 		}
 	}
+	controllerMetrics.SetRunners(numRunners, enterprise, organization, repository)
+	// TO IMPLEMENT
+	//controllerMetrics.SetRunnersRegistered(numRunnersRegistered)
+	//controllerMetrics.SetRunnersBusy(numRunnersBusy)
 
 	var desiredReplicas int
 	fractionBusy := float64(numRunnersBusy) / float64(desiredReplicasBefore)
